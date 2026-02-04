@@ -1,0 +1,63 @@
+{
+    "name": "creem/creem-laravel",
+    "description": "Official Laravel SDK for Creem payment platform - Subscription management and revenue platform for SaaS companies",
+    "keywords": [
+        "creem",
+        "laravel",
+        "payment",
+        "subscription",
+        "saas",
+        "billing"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Creem",
+            "email": "support@creem.io"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0|^11.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "spatie/laravel-data": "^3.0|^4.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "pestphp/pest": "^2.0|^3.0",
+        "pestphp/pest-plugin-laravel": "^2.0|^3.0",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Creem\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Creem\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test-coverage": "pest --coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Creem\\CreemServiceProvider"
+            ],
+            "aliases": {
+                "Creem": "Creem\\Facades\\Creem"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
