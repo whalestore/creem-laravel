@@ -1,7 +1,7 @@
 /vendor/
 /.idea/
 /.vscode/
-composer.lock
+# composer.lock 包开发时保留
 .phpunit.result.cache
 .php-cs-fixer.cache
 coverage/
