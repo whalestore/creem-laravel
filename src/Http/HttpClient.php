@@ -49,6 +49,7 @@ class HttpClient
 
     public function post(string $path, array $data = []): array
     {
+        $data = array_filter($data, fn($v) => $v !== null);
         return $this->request('POST', $path, ['json' => $data]);
     }
 
