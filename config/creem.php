@@ -74,7 +74,7 @@ return [
         'max_elapsed_time' => env('CREEM_RETRY_MAX_ELAPSED_TIME', 3600000),
 
         // HTTP status codes that should trigger a retry
-        'retry_codes' => ['429', '500', '502', '503', '504'],
+        'retry_codes' => ['403', '429', '500', '502', '503', '504'],
 
         // Whether to retry on connection errors
         'retry_connection_errors' => env('CREEM_RETRY_CONNECTION_ERRORS', true),
