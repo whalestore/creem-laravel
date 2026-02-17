@@ -17,12 +17,13 @@ class WebhookController extends Controller
 
     public function handle(Request $request): Response
     {
+        $rawContent = $request->getContent();
         $payload = $request->all();
         $signature = $request->header('X-Creem-Signature', '');
         $secret = config('creem.webhook.secret', '');
 
         try {
-            $this->handler->handle($payload, $signature, $secret);
+            $this->handler->handle($payload, $rawContent, $signature, $secret);
             return response('OK', 200);
         } catch (\Exception $e) {
             return response($e->getMessage(), 400);

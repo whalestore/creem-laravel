@@ -22,7 +22,7 @@ class LicenseInstanceEntity extends Data
         public string $object,
         public string $name,
         public string $status,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $createdAt,
     ) {}
 }

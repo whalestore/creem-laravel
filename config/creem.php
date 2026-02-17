@@ -108,4 +108,33 @@ return [
     |
     */
     'debug' => env('CREEM_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Subscription Middleware Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Configuration for the EnsureSubscribed middleware.
+    |
+    */
+    'subscription' => [
+        // Where to redirect users who need to subscribe
+        'redirect' => env('CREEM_SUBSCRIPTION_REDIRECT', '/subscribe'),
+
+        // Where to redirect unauthenticated users
+        'login_redirect' => env('CREEM_LOGIN_REDIRECT', '/login'),
+
+        // Allow access if subscription check fails (API error, etc.)
+        'allow_on_error' => env('CREEM_ALLOW_ON_ERROR', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Checkout Route Path
+    |--------------------------------------------------------------------------
+    |
+    | The route path for the checkout form handler.
+    |
+    */
+    'checkout_path' => env('CREEM_CHECKOUT_PATH', '/creem/checkout'),
 ];

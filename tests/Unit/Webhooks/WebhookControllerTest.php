@@ -50,7 +50,7 @@ test('webhook controller returns 400 on error', function () {
 test('webhook controller gets signature from header', function () {
     $handler = Mockery::mock(WebhookHandler::class);
     $handler->shouldReceive('handle')
-        ->with(Mockery::any(), 'custom_sig_value', Mockery::any())
+        ->with(Mockery::any(), Mockery::any(), 'custom_sig_value', Mockery::any())
         ->once();
 
     $controller = new WebhookController($handler);

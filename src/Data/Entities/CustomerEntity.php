@@ -21,9 +21,9 @@ class CustomerEntity extends Data
         public string $object,
         public string $email,
         public string $country,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $createdAt,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $updatedAt,
         public ?string $name = null,
     ) {}

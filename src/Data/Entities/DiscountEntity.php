@@ -29,7 +29,7 @@ class DiscountEntity extends Data
         public ?int $amount = null,
         public ?string $currency = null,
         public ?float $percentage = null,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public ?DateTime $expiryDate = null,
         public ?int $maxRedemptions = null,
         public ?CouponDurationType $duration = null,

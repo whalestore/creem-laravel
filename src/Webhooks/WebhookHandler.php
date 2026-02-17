@@ -30,11 +30,10 @@ class WebhookHandler
         'license.deactivated' => LicenseDeactivated::class,
     ];
 
-    public function handle(array $payload, string $signature, string $secret): void
+    public function handle(array $payload, string $rawContent, string $signature, string $secret): void
     {
-        // Verify signature
-        $payloadString = json_encode($payload);
-        WebhookSignature::verify($payloadString, $signature, $secret);
+        // Verify signature using raw content
+        WebhookSignature::verify($rawContent, $signature, $secret);
 
         // Parse event
         $event = WebhookEvent::from($payload);

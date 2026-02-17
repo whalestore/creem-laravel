@@ -26,9 +26,9 @@ class OrderEntity extends Data
         public string $currency,
         public OrderStatus $status,
         public OrderType $type,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $createdAt,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $updatedAt,
         public ?string $customer = null,
         public ?string $transaction = null,

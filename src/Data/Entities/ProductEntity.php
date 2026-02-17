@@ -29,9 +29,9 @@ class ProductEntity extends Data
         public string $currency,
         public ProductBillingType $billingType,
         public ProductStatus $status,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $createdAt,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $updatedAt,
         public ?string $description = null,
         public ?string $imageUrl = null,

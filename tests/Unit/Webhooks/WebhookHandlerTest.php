@@ -17,10 +17,11 @@ test('webhook handler dispatches generic event', function () {
         'object' => 'event',
         'data' => ['id' => 'ch_123'],
     ];
+    $rawContent = json_encode($payload);
     $secret = 'test_secret';
-    $signature = hash_hmac('sha256', json_encode($payload), $secret);
+    $signature = hash_hmac('sha256', $rawContent, $secret);
 
-    $handler->handle($payload, $signature, $secret);
+    $handler->handle($payload, $rawContent, $signature, $secret);
 
     Event::assertDispatched(CreemWebhookReceived::class);
 });
@@ -32,10 +33,11 @@ test('webhook handler dispatches checkout completed event', function () {
         'object' => 'event',
         'data' => ['id' => 'ch_123'],
     ];
+    $rawContent = json_encode($payload);
     $secret = 'test_secret';
-    $signature = hash_hmac('sha256', json_encode($payload), $secret);
+    $signature = hash_hmac('sha256', $rawContent, $secret);
 
-    $handler->handle($payload, $signature, $secret);
+    $handler->handle($payload, $rawContent, $signature, $secret);
 
     Event::assertDispatched(CheckoutCompleted::class);
 });
@@ -47,10 +49,11 @@ test('webhook handler dispatches subscription active event', function () {
         'object' => 'event',
         'data' => ['id' => 'sub_123'],
     ];
+    $rawContent = json_encode($payload);
     $secret = 'test_secret';
-    $signature = hash_hmac('sha256', json_encode($payload), $secret);
+    $signature = hash_hmac('sha256', $rawContent, $secret);
 
-    $handler->handle($payload, $signature, $secret);
+    $handler->handle($payload, $rawContent, $signature, $secret);
 
     Event::assertDispatched(SubscriptionActive::class);
 });
@@ -62,9 +65,10 @@ test('webhook handler throws on invalid signature', function () {
         'object' => 'event',
         'data' => [],
     ];
+    $rawContent = json_encode($payload);
     $secret = 'test_secret';
     $invalidSignature = 'invalid';
 
-    expect(fn() => $handler->handle($payload, $invalidSignature, $secret))
+    expect(fn() => $handler->handle($payload, $rawContent, $invalidSignature, $secret))
         ->toThrow(\Creem\Exceptions\ValidationException::class);
 });

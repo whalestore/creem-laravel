@@ -24,10 +24,10 @@ class LicenseEntity extends Data
         public LicenseStatus $status,
         public string $key,
         public int $activation,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public DateTime $createdAt,
         public ?int $activationLimit = null,
-        #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:s\Z')]
+        #[WithCast(DateTimeInterfaceCast::class, format: ['Y-m-d\TH:i:s.v\Z', 'Y-m-d\TH:i:s\Z'])]
         public ?DateTime $expiresAt = null,
         public ?LicenseInstanceEntity $instance = null,
     ) {}
