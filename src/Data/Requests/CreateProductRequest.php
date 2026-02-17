@@ -21,7 +21,7 @@ class CreateProductRequest extends Data
         public int $price,
         public ProductCurrency $currency,
         public ProductBillingType $billingType,
-        public ?string $description = null,
+        public string $description = '',
         public ?string $imageUrl = null,
         public ?ProductBillingPeriod $billingPeriod = null,
         public ?TaxMode $taxMode = null,
