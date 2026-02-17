@@ -107,7 +107,9 @@ class HttpClient
         if ($body) {
             $decoded = json_decode($body, true);
             if (isset($decoded['message'])) {
-                $message = $decoded['message'];
+                $message = is_array($decoded['message'])
+                    ? json_encode($decoded['message'])
+                    : $decoded['message'];
             }
         }
 
